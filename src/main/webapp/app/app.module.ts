@@ -26,6 +26,7 @@ import {
     PageRibbonComponent,
     ErrorComponent
 } from './layouts';
+import { GasstationFuelModule } from './fuel/fuel.module';
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import {
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         GasstationSharedModule,
         GasstationHomeModule,
+        GasstationFuelModule,
         GasstationAdminModule,
         GasstationAccountModule,
         GasstationEntityModule,

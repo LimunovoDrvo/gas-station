@@ -1,0 +1,38 @@
+<div>
+    <h2>
+        <span>Items</span>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="items">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Naziv Robe</span></th>
+            <th><span>Vrsta Robe</span></th>
+            <th><span>Grupa Robe</span></th>
+            <th><span>Hijerarhija Robe</span></th>
+            <th><span>Osnovna Cena</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of items ;trackBy: trackId">
+                <td><a [routerLink]="['../item', item.id ]">{{item.id}}</a></td>
+                <td>{{item.nazivRobe}}</td>
+                <td>{{item.vrstaRobe}}</td>
+                <td>{{item.grupaRobe}}</td>
+                <td>{{item.hijerarhijaRobe}}</td>
+                <td>{{item.osnovnaCena}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "nazivRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vrstaRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grupaRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hijerarhijaRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "osnovnaCena",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20180303034903",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "item",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

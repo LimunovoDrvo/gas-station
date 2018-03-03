@@ -17,7 +17,7 @@
     <!--
         Added the entity Item.
     -->
-    <changeSet id="20180303034903-1" author="marko">
+    <changeSet id="20180303034903-1" author="jhipster">
         <createTable tableName="item">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
@@ -46,13 +46,13 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="kolicina" type="double">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-         <loadData encoding="UTF-8"
-                  file="config/liquibase/items.csv"
-                  separator=";"
-                  tableName="item">
-        </loadData>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

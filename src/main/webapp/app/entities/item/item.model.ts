@@ -9,6 +9,7 @@ export class Item implements BaseEntity {
         public hijerarhijaRobe?: string,
         public osnovnaCena?: number,
         public slika?: string,
+        public kolicina?: number,
     ) {
     }
 }

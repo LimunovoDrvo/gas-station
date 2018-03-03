@@ -25,6 +25,10 @@
         {
             "fieldName": "slika",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "kolicina",
+            "fieldType": "Double"
         }
     ],
     "changelogDate": "20180303034903",

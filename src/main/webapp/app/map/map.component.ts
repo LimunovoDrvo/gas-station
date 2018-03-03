@@ -51,6 +51,10 @@ export class MapComponent implements OnInit {
         this.registerAuthenticationSuccess();
     }
     
+    setStation(m){
+        this.dest = {lat: m.gpsLat, lng: m.gpsLon}
+    }
+    
     public loadAPIWrapper( map ) {
         this.map = map;
     }

@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.nis.gasstation.domain.Transaction;
 
 import com.nis.gasstation.repository.TransactionRepository;
+import com.nis.gasstation.service.UserService;
 import com.nis.gasstation.web.rest.errors.BadRequestAlertException;
 import com.nis.gasstation.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -30,9 +31,12 @@ public class TransactionResource {
     private static final String ENTITY_NAME = "transaction";
 
     private final TransactionRepository transactionRepository;
+    
+    private final UserService userService;
 
-    public TransactionResource(TransactionRepository transactionRepository) {
+    public TransactionResource(TransactionRepository transactionRepository, UserService userService) {
         this.transactionRepository = transactionRepository;
+        this.userService = userService;
     }
 
     /**
@@ -87,7 +91,7 @@ public class TransactionResource {
     public List<Transaction> getAllTransactions() {
     	
         log.debug("REST request to get all Transactions");
-        return transactionRepository.findAll();
+        return transactionRepository.findByLoyaltyKartica("7825681740260000");
         }
 
     /**

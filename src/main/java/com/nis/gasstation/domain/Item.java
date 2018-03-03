@@ -34,6 +34,9 @@ public class Item implements Serializable {
     @Column(name = "osnovna_cena")
     private Double osnovnaCena;
 
+    @Column(name = "slika")
+    private String slika;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -107,6 +110,19 @@ public class Item implements Serializable {
     public void setOsnovnaCena(Double osnovnaCena) {
         this.osnovnaCena = osnovnaCena;
     }
+
+    public String getSlika() {
+        return slika;
+    }
+
+    public Item slika(String slika) {
+        this.slika = slika;
+        return this;
+    }
+
+    public void setSlika(String slika) {
+        this.slika = slika;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -138,6 +154,7 @@ public class Item implements Serializable {
             ", grupaRobe='" + getGrupaRobe() + "'" +
             ", hijerarhijaRobe='" + getHijerarhijaRobe() + "'" +
             ", osnovnaCena=" + getOsnovnaCena() +
+            ", slika='" + getSlika() + "'" +
             "}";
     }
 }

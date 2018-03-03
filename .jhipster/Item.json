@@ -21,6 +21,10 @@
         {
             "fieldName": "osnovnaCena",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "slika",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180303034903",

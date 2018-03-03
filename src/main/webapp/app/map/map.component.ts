@@ -5,7 +5,6 @@ import { JhiEventManager } from 'ng-jhipster';
 import { Account, LoginModalService, Principal } from '../shared';
 import { StationService, Station } from "../../app/entities/station";
 import { HttpResponse } from "@angular/common/http";
-
 @Component({
     selector: 'jhi-map',
     templateUrl: './map.component.html',
@@ -18,14 +17,13 @@ export class MapComponent implements OnInit {
     map: any;
     account: Account;
     modalRef: NgbModalRef;
-
     markers: any[];
 
     public stations: any[];
-
-    lat = 44;
-    lng = 23;
-
+    
+    start = {lat: 44.8104520, lng: 20.4621700}
+    dest = null;
+    
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
@@ -46,6 +44,7 @@ export class MapComponent implements OnInit {
                         s.gpsLat = Number(s.gpsLat);
                         s.gpsLon = Number(s.gpsLon);
                     });
+                    this.dest = {lat: 44.8087, lng: 20.47428}
                 }
             );
         
@@ -71,18 +70,6 @@ export class MapComponent implements OnInit {
     login() {
         this.modalRef = this.loginModalService.open();
     }
-    
-   /* openFuelPage(){
-        alert('test')
-    }
-    
-    openGFriendPage()
-    
-    openAutoPage()
-    
-    openFoodPage()
-    
-    openDrinkPage()*/
     
     
 }

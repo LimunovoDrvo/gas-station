@@ -15,5 +15,5 @@ import org.springframework.data.jpa.repository.*;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
 	List<Transaction> findByLoyaltyKartica(String string);
-
+	
 }

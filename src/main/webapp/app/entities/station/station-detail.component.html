@@ -1,0 +1,50 @@
+
+<div *ngIf="station">
+    <h2><span>Station</span> {{station.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Sifra Bs</span></dt>
+        <dd>
+            <span>{{station.sifraBs}}</span>
+        </dd>
+        <dt><span>Naziv</span></dt>
+        <dd>
+            <span>{{station.naziv}}</span>
+        </dd>
+        <dt><span>Brend</span></dt>
+        <dd>
+            <span>{{station.brend}}</span>
+        </dd>
+        <dt><span>Adresa</span></dt>
+        <dd>
+            <span>{{station.adresa}}</span>
+        </dd>
+        <dt><span>Mesto</span></dt>
+        <dd>
+            <span>{{station.mesto}}</span>
+        </dd>
+        <dt><span>Gps Lat</span></dt>
+        <dd>
+            <span>{{station.gpsLat}}</span>
+        </dd>
+        <dt><span>Gps Lon</span></dt>
+        <dd>
+            <span>{{station.gpsLon}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'station/'+ station.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

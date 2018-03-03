@@ -4,25 +4,22 @@ import { HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { Item } from './item.model';
-import { ItemService } from './item.service';
+import { Station } from './station.model';
+import { StationService } from './station.service';
 
 @Component({
-    selector: 'jhi-item-detail',
-    templateUrl: './item-detail.component.html',
-    styleUrls: [
-                'item.scss'
-            ]
+    selector: 'jhi-station-detail',
+    templateUrl: './station-detail.component.html'
 })
-export class ItemDetailComponent implements OnInit, OnDestroy {
+export class StationDetailComponent implements OnInit, OnDestroy {
 
-    item: Item;
+    station: Station;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
     constructor(
         private eventManager: JhiEventManager,
-        private itemService: ItemService,
+        private stationService: StationService,
         private route: ActivatedRoute
     ) {
     }
@@ -31,13 +28,13 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
-        this.registerChangeInItems();
+        this.registerChangeInStations();
     }
 
     load(id) {
-        this.itemService.find(id)
-            .subscribe((itemResponse: HttpResponse<Item>) => {
-                this.item = itemResponse.body;
+        this.stationService.find(id)
+            .subscribe((stationResponse: HttpResponse<Station>) => {
+                this.station = stationResponse.body;
             });
     }
     previousState() {
@@ -49,10 +46,10 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
         this.eventManager.destroy(this.eventSubscriber);
     }
 
-    registerChangeInItems() {
+    registerChangeInStations() {
         this.eventSubscriber = this.eventManager.subscribe(
-            'itemListModification',
-            (response) => this.load(this.item.id)
+            'stationListModification',
+            (response) => this.load(this.station.id)
         );
     }
 }

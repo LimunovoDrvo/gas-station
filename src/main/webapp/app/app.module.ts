@@ -27,6 +27,7 @@ import {
     ErrorComponent
 } from './layouts';
 import { GasstationFuelModule } from './fuel/fuel.module';
+import { GasstationMapModule } from './map/map.module';
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import { GasstationFuelModule } from './fuel/fuel.module';
         GasstationSharedModule,
         GasstationHomeModule,
         GasstationFuelModule,
+        GasstationMapModule,
         GasstationAdminModule,
         GasstationAccountModule,
         GasstationEntityModule,

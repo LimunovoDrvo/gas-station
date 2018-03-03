@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Stations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-station" [routerLink]="['/', { outlets: { popup: ['station-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Station
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="stations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Sifra Bs</span></th>
+            <th><span>Naziv</span></th>
+            <th><span>Brend</span></th>
+            <th><span>Adresa</span></th>
+            <th><span>Mesto</span></th>
+            <th><span>Gps Lat</span></th>
+            <th><span>Gps Lon</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let station of stations ;trackBy: trackId">
+                <td><a [routerLink]="['../station', station.id ]">{{station.id}}</a></td>
+                <td>{{station.sifraBs}}</td>
+                <td>{{station.naziv}}</td>
+                <td>{{station.brend}}</td>
+                <td>{{station.adresa}}</td>
+                <td>{{station.mesto}}</td>
+                <td>{{station.gpsLat}}</td>
+                <td>{{station.gpsLon}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../station', station.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'station/'+ station.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'station/'+ station.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

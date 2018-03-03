@@ -80,6 +80,19 @@ public class TransactionResource {
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, transaction.getId().toString()))
             .body(result);
     }
+    
+    /**
+     * GET  /transactions : get all the transactions.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of transactions in body
+     */
+    @GetMapping("/locations")
+    @Timed
+    public List<Transaction> getAllLocations() {
+    	
+        log.debug("REST request to get all Locations");
+        return transactionRepository.findByLoyaltyKartica("7825681740260000");
+        }
 
     /**
      * GET  /transactions : get all the transactions.

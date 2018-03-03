@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { GasstationSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
@@ -8,7 +7,7 @@ import { HOME_ROUTE, HomeComponent } from './';
 @NgModule({
     imports: [
         GasstationSharedModule,
-        RouterModule.forChild([ HOME_ROUTE ])
+        RouterModule.forChild([ HOME_ROUTE ]),
     ],
     declarations: [
         HomeComponent,

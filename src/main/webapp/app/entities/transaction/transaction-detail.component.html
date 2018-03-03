@@ -1,94 +1,69 @@
-
-<div *ngIf="transaction">
-    <h2><span>Transaction</span> {{transaction.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span>Sifra BS</span></dt>
-        <dd>
-            <span>{{transaction.sifraBS}}</span>
-        </dd>
-        <dt><span>Broj Racuna</span></dt>
-        <dd>
-            <span>{{transaction.brojRacuna}}</span>
-        </dd>
-        <dt><span>Broj Stavke</span></dt>
-        <dd>
-            <span>{{transaction.brojStavke}}</span>
-        </dd>
-        <dt><span>Datum</span></dt>
-        <dd>
-            <span>{{transaction.datum}}</span>
-        </dd>
-        <dt><span>Vreme</span></dt>
-        <dd>
-            <span>{{transaction.vreme}}</span>
-        </dd>
-        <dt><span>Tip Kupca</span></dt>
-        <dd>
-            <span>{{transaction.tipKupca}}</span>
-        </dd>
-        <dt><span>Sifra Robe</span></dt>
-        <dd>
-            <span>{{transaction.sifraRobe}}</span>
-        </dd>
-        <dt><span>Naziv Robe</span></dt>
-        <dd>
-            <span>{{transaction.nazivRobe}}</span>
-        </dd>
-        <dt><span>Vrsta Robe</span></dt>
-        <dd>
-            <span>{{transaction.vrstaRobe}}</span>
-        </dd>
-        <dt><span>Grupa Robe</span></dt>
-        <dd>
-            <span>{{transaction.grupaRobe}}</span>
-        </dd>
-        <dt><span>Hijerarhija Robe</span></dt>
-        <dd>
-            <span>{{transaction.hijerarhijaRobe}}</span>
-        </dd>
-        <dt><span>Kolicina</span></dt>
-        <dd>
-            <span>{{transaction.kolicina}}</span>
-        </dd>
-        <dt><span>Konacna Cena</span></dt>
-        <dd>
-            <span>{{transaction.konacnaCena}}</span>
-        </dd>
-        <dt><span>Osnovna Cena</span></dt>
-        <dd>
-            <span>{{transaction.osnovnaCena}}</span>
-        </dd>
-        <dt><span>Kompanijska Kartica</span></dt>
-        <dd>
-            <span>{{transaction.kompanijskaKartica}}</span>
-        </dd>
-        <dt><span>Loyalty Kartica</span></dt>
-        <dd>
-            <span>{{transaction.loyaltyKartica}}</span>
-        </dd>
-        <dt><span>Loyalty Kartica Status</span></dt>
-        <dd>
-            <span>{{transaction.loyaltyKarticaStatus}}</span>
-        </dd>
-        <dt><span>Loyalty Poeni</span></dt>
-        <dd>
-            <span>{{transaction.loyaltyPoeni}}</span>
-        </dd>
-    </dl>
-
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
-
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'transaction/'+ transaction.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
-    </button>
-</div>
+<html>
+<head>
+<script type="text/javascript">
+function onVisaCheckoutReady() {
+console.log('asd');
+V.init({
+apikey: "BJ8K7OI5KQHL1Q4X69HL21UDwTte6kZ2NO-HwhNGNjqIVvyKA",
+sourceId: "Merchant Defined Source ID",
+settings: {
+locale: "en_US",
+countryCode: "US",
+displayName: "...Corp",
+logoUrl: "www.Some_Image_URL.gif",
+websiteUrl: "www....Corp.com",
+customerSupportUrl: "www....Corp.support.com",
+shipping: {
+acceptedRegions: ["US", "CA"],
+collectShipping: "true"
+},
+payment: {
+cardBrands: [
+"VISA",
+"MASTERCARD"],
+acceptCanadianVisaDebit: "true"
+},
+review: {
+message: "Merchant defined message",
+buttonAction: "Continue"
+},
+dataLevel: "SUMMARY"
+},
+paymentRequest: {
+merchantRequestId: "Merchant defined request ID",
+currencyCode: "USD",
+subtotal: "10.00",
+shippingHandling: "2.00",
+tax: "2.00",
+discount: "1.00",
+giftWrap: "2.00",
+misc: "1.00",
+total: "16.00",
+description: "Megacorp Product",
+orderId: "Merchant defined order ID",
+promoCode: "Merchant defined promo code",
+customData: {
+"nvPair": [
+{ "name": "customName1", "value": "customValue1" },
+{ "name": "customName2", "value": "customValue2" }
+]
+}
+}
+}
+);
+V.on("payment.success", function(payment){document.write(JSON.stringify(payment)); });
+V.on("payment.cancel", function (payment) { ... });
+V.on("payment.error", function (payment, error) { ... });
+}
+</script>
+</head>
+<body>
+	<img alt="Visa Checkout" class="v-button" role="button"
+		src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?
+cardBrands=VISA,MASTERCARD,DISCOVER,AMEX" />
+	<script type="text/javascript"
+		src="https://sandbox-assets.secure.checkout.visa.com/
+checkout-widget/resources/js/integration/v1/sdk.js">
+</script>
+</body>
+</html>

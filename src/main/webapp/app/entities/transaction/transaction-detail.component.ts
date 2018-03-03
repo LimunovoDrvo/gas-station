@@ -7,6 +7,7 @@ import { JhiEventManager } from 'ng-jhipster';
 import { Transaction } from './transaction.model';
 import { TransactionService } from './transaction.service';
 
+
 @Component({
     selector: 'jhi-transaction-detail',
     templateUrl: './transaction-detail.component.html'

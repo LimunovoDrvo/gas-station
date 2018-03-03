@@ -1,0 +1,115 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTransactionLabel">Create or edit a Transaction</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!transaction.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="transaction.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_sifraBS">Sifra BS</label>
+            <input type="text" class="form-control" name="sifraBS" id="field_sifraBS"
+                [(ngModel)]="transaction.sifraBS" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_brojRacuna">Broj Racuna</label>
+            <input type="text" class="form-control" name="brojRacuna" id="field_brojRacuna"
+                [(ngModel)]="transaction.brojRacuna" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_brojStavke">Broj Stavke</label>
+            <input type="text" class="form-control" name="brojStavke" id="field_brojStavke"
+                [(ngModel)]="transaction.brojStavke" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_datum">Datum</label>
+            <input type="text" class="form-control" name="datum" id="field_datum"
+                [(ngModel)]="transaction.datum" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_vreme">Vreme</label>
+            <input type="text" class="form-control" name="vreme" id="field_vreme"
+                [(ngModel)]="transaction.vreme" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_tipKupca">Tip Kupca</label>
+            <input type="text" class="form-control" name="tipKupca" id="field_tipKupca"
+                [(ngModel)]="transaction.tipKupca" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_sifraRobe">Sifra Robe</label>
+            <input type="text" class="form-control" name="sifraRobe" id="field_sifraRobe"
+                [(ngModel)]="transaction.sifraRobe" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nazivRobe">Naziv Robe</label>
+            <input type="text" class="form-control" name="nazivRobe" id="field_nazivRobe"
+                [(ngModel)]="transaction.nazivRobe" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_vrstaRobe">Vrsta Robe</label>
+            <input type="text" class="form-control" name="vrstaRobe" id="field_vrstaRobe"
+                [(ngModel)]="transaction.vrstaRobe" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_grupaRobe">Grupa Robe</label>
+            <input type="text" class="form-control" name="grupaRobe" id="field_grupaRobe"
+                [(ngModel)]="transaction.grupaRobe" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_hijerarhijaRobe">Hijerarhija Robe</label>
+            <input type="text" class="form-control" name="hijerarhijaRobe" id="field_hijerarhijaRobe"
+                [(ngModel)]="transaction.hijerarhijaRobe" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_kolicina">Kolicina</label>
+            <input type="number" class="form-control" name="kolicina" id="field_kolicina"
+                [(ngModel)]="transaction.kolicina" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_konacnaCena">Konacna Cena</label>
+            <input type="number" class="form-control" name="konacnaCena" id="field_konacnaCena"
+                [(ngModel)]="transaction.konacnaCena" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_osnovnaCena">Osnovna Cena</label>
+            <input type="number" class="form-control" name="osnovnaCena" id="field_osnovnaCena"
+                [(ngModel)]="transaction.osnovnaCena" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_kompanijskaKartica">Kompanijska Kartica</label>
+            <input type="text" class="form-control" name="kompanijskaKartica" id="field_kompanijskaKartica"
+                [(ngModel)]="transaction.kompanijskaKartica" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_loyaltyKartica">Loyalty Kartica</label>
+            <input type="text" class="form-control" name="loyaltyKartica" id="field_loyaltyKartica"
+                [(ngModel)]="transaction.loyaltyKartica" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_loyaltyKarticaStatus">Loyalty Kartica Status</label>
+            <input type="text" class="form-control" name="loyaltyKarticaStatus" id="field_loyaltyKarticaStatus"
+                [(ngModel)]="transaction.loyaltyKarticaStatus" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_loyaltyPoeni">Loyalty Poeni</label>
+            <input type="number" class="form-control" name="loyaltyPoeni" id="field_loyaltyPoeni"
+                [(ngModel)]="transaction.loyaltyPoeni" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

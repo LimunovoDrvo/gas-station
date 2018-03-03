@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Transaction.
+    -->
+    <changeSet id="20180303030920-1" author="marko">
+        <createTable tableName="transaction">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="sifra_bs" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="broj_racuna" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="broj_stavke" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="datum" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vreme" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tip_kupca" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sifra_robe" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="naziv_robe" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="vrsta_robe" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="grupa_robe" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hijerarhija_robe" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="kolicina" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="konacna_cena" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="osnovna_cena" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="kompanijska_kartica" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="loyalty_kartica" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="loyalty_kartica_status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="loyalty_poeni" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/Transakcije_ mesec_01.csv"
+                  separator=";"
+                  tableName="transaction">
+        </loadData>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

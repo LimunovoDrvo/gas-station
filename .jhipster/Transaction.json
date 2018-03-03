@@ -1,0 +1,84 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "sifraBS",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brojRacuna",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brojStavke",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "datum",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vreme",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tipKupca",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sifraRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nazivRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vrstaRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grupaRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hijerarhijaRobe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kolicina",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "konacnaCena",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "osnovnaCena",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "kompanijskaKartica",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "loyaltyKartica",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "loyaltyKarticaStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "loyaltyPoeni",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20180303030920",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "transaction",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

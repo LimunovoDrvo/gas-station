@@ -1,7 +1,11 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="10"> <!-- markers for origin and destination -->
-<!-- 	<agm-kml-layer [url]="'https://drive.google.com/open?id=12itUnEXyec0rh_NhCeiBoNX5OUn-Jfd2&usp=kml'" ></agm-kml-layer> -->
+	<div class="col-12">
+<div *ngIf="destStation != null">{{destStation.naziv}}, {{destStation.adresa}}</div>
 
-<agm-direction *ngIf="dest != null" [origin]="start" [destination]="dest"></agm-direction>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="10"> <!-- markers for origin and destination -->
+
+<agm-direction [waypoints]="waypoints" *ngIf="dest != null" [origin]="start" [destination]="dest"></agm-direction>
 
 <agm-marker *ngFor="let m of stations" [latitude]="m.gpsLat" (markerClick)="setStation(m)"
 	[longitude]="m.gpsLon"> </agm-marker> </agm-map>
+	
+</div>

@@ -6,35 +6,35 @@ import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { Item } from './item.model';
-import { ItemPopupService } from './item-popup.service';
-import { ItemService } from './item.service';
-import { Qrcode, QrcodeService } from '../qrcode';
+import { Qrcode } from './qrcode.model';
+import { QrcodePopupService } from './qrcode-popup.service';
+import { QrcodeService } from './qrcode.service';
+import { User, UserService } from '../../shared';
 
 @Component({
-    selector: 'jhi-item-dialog',
-    templateUrl: './item-dialog.component.html'
+    selector: 'jhi-qrcode-dialog',
+    templateUrl: './qrcode-dialog.component.html'
 })
-export class ItemDialogComponent implements OnInit {
+export class QrcodeDialogComponent implements OnInit {
 
-    item: Item;
+    qrcode: Qrcode;
     isSaving: boolean;
 
-    qrcodes: Qrcode[];
+    users: User[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
-        private itemService: ItemService,
         private qrcodeService: QrcodeService,
+        private userService: UserService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.qrcodeService.query()
-            .subscribe((res: HttpResponse<Qrcode[]>) => { this.qrcodes = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.userService.query()
+            .subscribe((res: HttpResponse<User[]>) => { this.users = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -43,22 +43,22 @@ export class ItemDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        if (this.item.id !== undefined) {
+        if (this.qrcode.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.itemService.update(this.item));
+                this.qrcodeService.update(this.qrcode));
         } else {
             this.subscribeToSaveResponse(
-                this.itemService.create(this.item));
+                this.qrcodeService.create(this.qrcode));
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<HttpResponse<Item>>) {
-        result.subscribe((res: HttpResponse<Item>) =>
+    private subscribeToSaveResponse(result: Observable<HttpResponse<Qrcode>>) {
+        result.subscribe((res: HttpResponse<Qrcode>) =>
             this.onSaveSuccess(res.body), (res: HttpErrorResponse) => this.onSaveError());
     }
 
-    private onSaveSuccess(result: Item) {
-        this.eventManager.broadcast({ name: 'itemListModification', content: 'OK'});
+    private onSaveSuccess(result: Qrcode) {
+        this.eventManager.broadcast({ name: 'qrcodeListModification', content: 'OK'});
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -71,32 +71,32 @@ export class ItemDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackQrcodeById(index: number, item: Qrcode) {
+    trackUserById(index: number, item: User) {
         return item.id;
     }
 }
 
 @Component({
-    selector: 'jhi-item-popup',
+    selector: 'jhi-qrcode-popup',
     template: ''
 })
-export class ItemPopupComponent implements OnInit, OnDestroy {
+export class QrcodePopupComponent implements OnInit, OnDestroy {
 
     routeSub: any;
 
     constructor(
         private route: ActivatedRoute,
-        private itemPopupService: ItemPopupService
+        private qrcodePopupService: QrcodePopupService
     ) {}
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-                this.itemPopupService
-                    .open(ItemDialogComponent as Component, params['id']);
+                this.qrcodePopupService
+                    .open(QrcodeDialogComponent as Component, params['id']);
             } else {
-                this.itemPopupService
-                    .open(ItemDialogComponent as Component);
+                this.qrcodePopupService
+                    .open(QrcodeDialogComponent as Component);
             }
         });
     }

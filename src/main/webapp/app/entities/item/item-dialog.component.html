@@ -48,6 +48,13 @@
                 [(ngModel)]="item.kolicina" />
         </div>
 
+        <div class="form-group">
+            <label class="form-control-label" for="field_qrcode">Qrcode</label>
+            <select class="form-control" id="field_qrcode" name="qrcode" [(ngModel)]="item.qrcode" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="qrcodeOption.id === item.qrcode?.id ? item.qrcode : qrcodeOption" *ngFor="let qrcodeOption of qrcodes; trackBy: trackQrcodeById">{{qrcodeOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

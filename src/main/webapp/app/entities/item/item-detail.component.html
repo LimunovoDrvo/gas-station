@@ -32,6 +32,12 @@
         <dd>
             <span>{{item.kolicina}}</span>
         </dd>
+        <dt><span>Qrcode</span></dt>
+        <dd>
+            <div *ngIf="item.qrcode">
+                <a [routerLink]="['/qrcode', item.qrcode?.id]">{{item.qrcode?.id}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

@@ -15,52 +15,24 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Item.
+        Added the entity Qrcode.
     -->
-    <changeSet id="20180303034903-1" author="jhipster">
-        <createTable tableName="item">
+    <changeSet id="20180303134620-1" author="jhipster">
+        <createTable tableName="qrcode">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="naziv_robe" type="varchar(255)">
+            <column name="transaction_id" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="vrsta_robe" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="grupa_robe" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="hijerarhija_robe" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="osnovna_cena" type="double">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="slika" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="kolicina" type="double">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="qrcode_id" type="bigint">
+            <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/items.csv"
-                  separator=";"
-                  tableName="item">
-        </loadData>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

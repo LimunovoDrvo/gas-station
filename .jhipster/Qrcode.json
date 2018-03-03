@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "items",
+            "otherEntityName": "item",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "qrcode"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "qrcode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "transactionId",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180303134620",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "qrcode",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

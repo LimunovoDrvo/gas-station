@@ -10,6 +10,7 @@ export class Item implements BaseEntity {
         public osnovnaCena?: number,
         public slika?: string,
         public kolicina?: number,
+        public qrcode?: BaseEntity,
     ) {
     }
 }

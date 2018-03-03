@@ -40,6 +40,9 @@ public class Item implements Serializable {
     @Column(name = "kolicina")
     private Double kolicina;
 
+    @ManyToOne
+    private Qrcode qrcode;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -138,6 +141,19 @@ public class Item implements Serializable {
 
     public void setKolicina(Double kolicina) {
         this.kolicina = kolicina;
+    }
+
+    public Qrcode getQrcode() {
+        return qrcode;
+    }
+
+    public Item qrcode(Qrcode qrcode) {
+        this.qrcode = qrcode;
+        return this;
+    }
+
+    public void setQrcode(Qrcode qrcode) {
+        this.qrcode = qrcode;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

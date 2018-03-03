@@ -1,10 +1,10 @@
 <div>
     <h2>
-        <span>Items</span>
-        <button class="btn btn-primary float-right jh-create-entity create-item" [routerLink]="['/', { outlets: { popup: ['item-new'] } }]">
+        <span>Qrcodes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-qrcode" [routerLink]="['/', { outlets: { popup: ['qrcode-new'] } }]">
             <span class="fa fa-plus"></span>
             <span >
-            Create new Item
+            Create new Qrcode
             </span>
         </button>
     </h2>
@@ -12,47 +12,33 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="items">
+    <div class="table-responsive" *ngIf="qrcodes">
         <table class="table table-striped">
             <thead>
             <tr>
             <th><span>ID</span></th>
-            <th><span>Naziv Robe</span></th>
-            <th><span>Vrsta Robe</span></th>
-            <th><span>Grupa Robe</span></th>
-            <th><span>Hijerarhija Robe</span></th>
-            <th><span>Osnovna Cena</span></th>
-            <th><span>Slika</span></th>
-            <th><span>Kolicina</span></th>
-            <th><span>Qrcode</span></th>
+            <th><span>Transaction Id</span></th>
+            <th><span>User</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let item of items ;trackBy: trackId">
-                <td><a [routerLink]="['../item', item.id ]">{{item.id}}</a></td>
-                <td>{{item.nazivRobe}}</td>
-                <td>{{item.vrstaRobe}}</td>
-                <td>{{item.grupaRobe}}</td>
-                <td>{{item.hijerarhijaRobe}}</td>
-                <td>{{item.osnovnaCena}}</td>
-                <td>{{item.slika}}</td>
-                <td>{{item.kolicina}}</td>
+            <tr *ngFor="let qrcode of qrcodes ;trackBy: trackId">
+                <td><a [routerLink]="['../qrcode', qrcode.id ]">{{qrcode.id}}</a></td>
+                <td>{{qrcode.transactionId}}</td>
                 <td>
-                    <div *ngIf="item.qrcode">
-                        <a [routerLink]="['../qrcode', item.qrcode?.id ]" >{{item.qrcode?.id}}</a>
-                    </div>
+                    {{qrcode.user?.login}}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['../item', item.id ]"
+                                [routerLink]="['../qrcode', qrcode.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="d-none d-md-inline">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'item/'+ item.id + '/edit'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'qrcode/'+ qrcode.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-primary btn-sm">
@@ -60,7 +46,7 @@
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'item/'+ item.id + '/delete'} }]"
+                                [routerLink]="['/', { outlets: { popup: 'qrcode/'+ qrcode.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">

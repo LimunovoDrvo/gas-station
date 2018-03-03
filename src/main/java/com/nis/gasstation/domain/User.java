@@ -24,7 +24,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "jhi_user")
 
-public class User implements Serializable {
+public class User extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -78,6 +78,9 @@ public class User implements Serializable {
     @Column(name = "reset_key", length = 20)
     @JsonIgnore
     private String resetKey;
+
+    @Column(name = "reset_date")
+    private Instant resetDate = null;
 
     @JsonIgnore
     @ManyToMany
@@ -168,6 +171,14 @@ public class User implements Serializable {
 
     public void setResetKey(String resetKey) {
         this.resetKey = resetKey;
+    }
+
+    public Instant getResetDate() {
+        return resetDate;
+    }
+
+    public void setResetDate(Instant resetDate) {
+        this.resetDate = resetDate;
     }
 
     public String getLangKey() {

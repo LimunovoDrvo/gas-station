@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "sifraBs",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "naziv",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brend",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresa",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mesto",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gpsLat",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gpsLon",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180303175343",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "station",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

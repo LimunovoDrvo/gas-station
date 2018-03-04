@@ -29,10 +29,8 @@ export class QrcodeService {
     public checkout() {
         this.create(this.cart).subscribe(
                 (res) => {
-                   alert('success')
                 },
                 (res) => {
-                    alert('error')
                 }
             );
     }

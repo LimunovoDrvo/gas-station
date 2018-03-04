@@ -16,8 +16,8 @@ export class QrcodeService {
     private cart: Qrcode = new Qrcode();
 
 
-    public addToCart( item: Item ) {
-        this.cart.items.push( item );
+    public addToCart( id: number ) {
+        this.cart.selectedItemIds.push( id );
     }
 
     public checkout() {

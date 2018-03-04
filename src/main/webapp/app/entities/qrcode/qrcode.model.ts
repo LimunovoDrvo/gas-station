@@ -6,7 +6,9 @@ export class Qrcode implements BaseEntity {
         public transactionId?: string,
         public items?: BaseEntity[],
         public user?: User,
+        public selectedItemIds?: number[]
     ) {
         items = [];
+        selectedItemIds = [];
     }
 }

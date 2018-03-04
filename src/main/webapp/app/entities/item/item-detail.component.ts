@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { Item } from './item.model';
-import { ItemService } from './item.service';
+import { QrcodeService } from "../../../app/entities/qrcode";
+import { ItemService } from "../../../app/entities/item";
 
 @Component({
     selector: 'jhi-item-detail',
@@ -22,8 +23,9 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
-        private itemService: ItemService,
-        private route: ActivatedRoute
+		private itemService: ItemService,
+        private route: ActivatedRoute,
+        private qrService: QrcodeService
     ) {
     }
 
@@ -35,7 +37,7 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
     }
     
     addToCart(id){
-        alert(id)
+        this.qrService.addToCart(id)
     }
 
     load(id) {

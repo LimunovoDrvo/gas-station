@@ -17,6 +17,9 @@ export class QrcodeService {
 
 
     public addToCart( id: number ) {
+        if(this.cart.selectedItemIds == null){
+            this.cart.selectedItemIds = [];
+        }
         this.cart.selectedItemIds.push( id );
     }
 

@@ -2,7 +2,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { GasstationSharedModule } from '../shared';
-
 import { FUEL_ROUTE, FuelComponent } from './';
 
 @NgModule({

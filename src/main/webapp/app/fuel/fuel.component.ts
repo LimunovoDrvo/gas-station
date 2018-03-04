@@ -4,18 +4,18 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { Account, LoginModalService, Principal } from '../shared';
 
-@Component({
+@Component( {
     selector: 'jhi-fuel',
     templateUrl: './fuel.component.html',
     styleUrls: [
         'fuel.scss'
     ]
 
-})
+} )
 export class FuelComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
-
+    fuelType = 1;
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
@@ -24,18 +24,18 @@ export class FuelComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.principal.identity().then((account) => {
+        this.principal.identity().then(( account ) => {
             this.account = account;
-        });
+        } );
         this.registerAuthenticationSuccess();
     }
 
     registerAuthenticationSuccess() {
-        this.eventManager.subscribe('authenticationSuccess', (message) => {
-            this.principal.identity().then((account) => {
+        this.eventManager.subscribe( 'authenticationSuccess', ( message ) => {
+            this.principal.identity().then(( account ) => {
                 this.account = account;
-            });
-        });
+            } );
+        } );
     }
 
     isAuthenticated() {
@@ -45,18 +45,18 @@ export class FuelComponent implements OnInit {
     login() {
         this.modalRef = this.loginModalService.open();
     }
-    
-   /* openFuelPage(){
-        alert('test')
-    }
-    
-    openGFriendPage()
-    
-    openAutoPage()
-    
-    openFoodPage()
-    
-    openDrinkPage()*/
-    
-    
+
+    /* openFuelPage(){
+         alert('test')
+     }
+     
+     openGFriendPage()
+     
+     openAutoPage()
+     
+     openFoodPage()
+     
+     openDrinkPage()*/
+
+
 }

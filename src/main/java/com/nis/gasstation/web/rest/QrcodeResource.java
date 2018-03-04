@@ -1,22 +1,32 @@
 package com.nis.gasstation.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.nis.gasstation.domain.Qrcode;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-import com.nis.gasstation.repository.QrcodeRepository;
-import com.nis.gasstation.web.rest.errors.BadRequestAlertException;
-import com.nis.gasstation.web.rest.util.HeaderUtil;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.codahale.metrics.annotation.Timed;
+import com.nis.gasstation.domain.Item;
+import com.nis.gasstation.domain.Qrcode;
+import com.nis.gasstation.repository.ItemRepository;
+import com.nis.gasstation.repository.QrcodeRepository;
+import com.nis.gasstation.web.rest.util.HeaderUtil;
 
-import java.util.List;
-import java.util.Optional;
+import io.github.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing Qrcode.
@@ -30,9 +40,12 @@ public class QrcodeResource {
     private static final String ENTITY_NAME = "qrcode";
 
     private final QrcodeRepository qrcodeRepository;
+    
+    private final ItemRepository itemRepository;
 
-    public QrcodeResource(QrcodeRepository qrcodeRepository) {
+    public QrcodeResource(QrcodeRepository qrcodeRepository, ItemRepository itemRepository) {
         this.qrcodeRepository = qrcodeRepository;
+        this.itemRepository = itemRepository;
     }
 
     /**
@@ -43,39 +56,36 @@ public class QrcodeResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/qrcodes")
-    @Timed
-    public ResponseEntity<Qrcode> createQrcode(@RequestBody Qrcode qrcode) throws URISyntaxException {
-        log.debug("REST request to save Qrcode : {}", qrcode);
-        if (qrcode.getId() != null) {
-            throw new BadRequestAlertException("A new qrcode cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        Qrcode result = qrcodeRepository.save(qrcode);
+    @Transactional
+    public ResponseEntity<Qrcode> createQrcode(@RequestBody String req) throws URISyntaxException {
+    	
+    	String[] split = req.split(",");
+    	Qrcode code = new Qrcode();
+    	Set<Item> items = new HashSet<>();
+    	for(String s : split) {
+    		Long valueOf = Long.valueOf(s);
+    		Item item = itemRepository.getOne(valueOf);
+    		
+    		Item newItem = new Item();
+    		newItem.setGrupaRobe(item.getGrupaRobe());
+    		newItem.setKolicina(1d);
+    		newItem.setNazivRobe(item.getNazivRobe());
+    		newItem.setOsnovnaCena(item.getOsnovnaCena());
+    		newItem.setVrstaRobe(item.getVrstaRobe());
+    		
+    		
+    		newItem.setQrcode(code);
+    		items.add(newItem);
+    	}
+    	
+    	code.setItems(items);
+    	
+        Qrcode result = qrcodeRepository.save(code);
         return ResponseEntity.created(new URI("/api/qrcodes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
-    /**
-     * PUT  /qrcodes : Updates an existing qrcode.
-     *
-     * @param qrcode the qrcode to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated qrcode,
-     * or with status 400 (Bad Request) if the qrcode is not valid,
-     * or with status 500 (Internal Server Error) if the qrcode couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
-    @PutMapping("/qrcodes")
-    @Timed
-    public ResponseEntity<Qrcode> updateQrcode(@RequestBody Qrcode qrcode) throws URISyntaxException {
-        log.debug("REST request to update Qrcode : {}", qrcode);
-        if (qrcode.getId() == null) {
-            return createQrcode(qrcode);
-        }
-        Qrcode result = qrcodeRepository.save(qrcode);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, qrcode.getId().toString()))
-            .body(result);
-    }
 
     /**
      * GET  /qrcodes : get all the qrcodes.

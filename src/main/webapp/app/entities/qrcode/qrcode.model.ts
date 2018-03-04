@@ -4,7 +4,7 @@ export class Qrcode implements BaseEntity {
     constructor(
         public id?: number,
         public transactionId?: string,
-        public items?: BaseEntity[],
+        public items?: any[],
         public user?: User,
     ) {
         items = [];

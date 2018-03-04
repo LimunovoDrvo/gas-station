@@ -25,7 +25,7 @@ public class Qrcode implements Serializable {
     @Column(name = "transaction_id")
     private String transactionId;
 
-    @OneToMany(mappedBy = "qrcode")
+    @OneToMany(mappedBy = "qrcode", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Item> items = new HashSet<>();
 

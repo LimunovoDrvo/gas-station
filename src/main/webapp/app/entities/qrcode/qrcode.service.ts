@@ -22,7 +22,7 @@ export class QrcodeService {
         if(this.cart.items == null){
             this.cart.items = [];
         }
-        this.cart.items.push( {id: id} );
+        this.cart.items.push( id );
         this.numOfItems++;
     }
 
@@ -41,9 +41,8 @@ export class QrcodeService {
     constructor( private http: HttpClient ) { }
 
     create( qrcode: Qrcode ) {
-        const copy = this.convert( qrcode );
-        return this.http.post<Qrcode>( this.resourceUrl, copy, { observe: 'response' } )
-            .map(( res: EntityResponseType ) =>{
+        return this.http.post( this.resourceUrl, this.cart.items.join(",")) 
+            .map(( res: any ) =>{
                 this.cart = new Qrcode(); 
                 this.numOfItems = 0;
             });

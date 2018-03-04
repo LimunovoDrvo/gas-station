@@ -33,6 +33,10 @@ export class ItemDetailComponent implements OnInit, OnDestroy {
         });
         this.registerChangeInItems();
     }
+    
+    addToCart(id){
+        alert(id)
+    }
 
     load(id) {
         this.itemService.find(id)

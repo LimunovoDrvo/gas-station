@@ -10,7 +10,7 @@ export type EntityResponseType = HttpResponse<Item>;
 
 @Injectable()
 export class ItemService {
-
+    
     private resourceUrl =  SERVER_API_URL + 'api/items';
 
     constructor(private http: HttpClient) { }

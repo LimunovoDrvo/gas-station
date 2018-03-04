@@ -11,7 +11,6 @@ export const qrcodeRoute: Routes = [
         path: 'qrcode',
         component: QrcodeComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Qrcodes'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +18,6 @@ export const qrcodeRoute: Routes = [
         path: 'qrcode/:id',
         component: QrcodeDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Qrcodes'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +29,6 @@ export const qrcodePopupRoute: Routes = [
         path: 'qrcode-new',
         component: QrcodePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Qrcodes'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +38,6 @@ export const qrcodePopupRoute: Routes = [
         path: 'qrcode/:id/edit',
         component: QrcodePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Qrcodes'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +47,6 @@ export const qrcodePopupRoute: Routes = [
         path: 'qrcode/:id/delete',
         component: QrcodeDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Qrcodes'
         },
         canActivate: [UserRouteAccessService],

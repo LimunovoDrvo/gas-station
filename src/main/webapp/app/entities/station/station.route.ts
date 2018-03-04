@@ -11,7 +11,6 @@ export const stationRoute: Routes = [
         path: 'station',
         component: StationComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Stations'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +18,6 @@ export const stationRoute: Routes = [
         path: 'station/:id',
         component: StationDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Stations'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +29,6 @@ export const stationPopupRoute: Routes = [
         path: 'station-new',
         component: StationPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Stations'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +38,6 @@ export const stationPopupRoute: Routes = [
         path: 'station/:id/edit',
         component: StationPopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Stations'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +47,6 @@ export const stationPopupRoute: Routes = [
         path: 'station/:id/delete',
         component: StationDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
             pageTitle: 'Stations'
         },
         canActivate: [UserRouteAccessService],

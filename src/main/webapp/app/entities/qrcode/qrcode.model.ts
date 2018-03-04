@@ -7,5 +7,6 @@ export class Qrcode implements BaseEntity {
         public items?: BaseEntity[],
         public user?: User,
     ) {
+        items = [];
     }
 }

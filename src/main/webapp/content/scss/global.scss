@@ -1,5 +1,16 @@
 @import 'bootstrap-variables';
 
+.footer {
+    display: inline-block;
+    background: url("../../content/images/foot.png") no-repeat center top;
+    background-size: contain;
+    padding: 0;
+    width: 359px;
+    height: 120px;
+}
+
+
+
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/

@@ -28,6 +28,7 @@ import {
 } from './layouts';
 import { GasstationFuelModule } from './fuel/fuel.module';
 import { GasstationMapModule } from './map/map.module';
+import { GasstationQrModule } from "./qr/qr.module";
 
 @NgModule({
     imports: [
@@ -38,6 +39,7 @@ import { GasstationMapModule } from './map/map.module';
         GasstationHomeModule,
         GasstationFuelModule,
         GasstationMapModule,
+        GasstationQrModule,
         GasstationAdminModule,
         GasstationAccountModule,
         GasstationEntityModule,

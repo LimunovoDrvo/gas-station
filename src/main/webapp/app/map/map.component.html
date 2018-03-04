@@ -1,11 +1,21 @@
-	<div class="col-12">
-<div *ngIf="destStation != null">{{destStation.naziv}}, {{destStation.adresa}}</div>
 
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="10"> <!-- markers for origin and destination -->
+<h4>Izaberite Pumpu</h4>
 
-<agm-direction [waypoints]="waypoints" *ngIf="dest != null" [origin]="start" [destination]="dest"></agm-direction>
+<div class="col-12">
+	<div *ngIf="destStation != null">{{destStation.naziv}},
+		{{destStation.adresa}}</div>
 
-<agm-marker *ngFor="let m of stations" [latitude]="m.gpsLat" (markerClick)="setStation(m)"
-	[longitude]="m.gpsLon"> </agm-marker> </agm-map>
-	
+	<agm-map [latitude]="lat" [longitude]="lng" [zoom]="10"> <!-- markers for origin and destination -->
+
+	<agm-direction [waypoints]="waypoints" *ngIf="dest != null"
+		[origin]="start" [destination]="dest"></agm-direction> <agm-marker
+		*ngFor="let m of stations" [latitude]="m.gpsLat"
+		(markerClick)="setStation(m)" [longitude]="m.gpsLon"> </agm-marker> </agm-map>
+
+	<div class="col-12" style="margin-top: 20px; margin-bottom:20px">
+		<a [routerLink]="['../qr']">
+			<button class="btn btn-primary">Dalje</button>
+		</a>
+	</div>
+
 </div>

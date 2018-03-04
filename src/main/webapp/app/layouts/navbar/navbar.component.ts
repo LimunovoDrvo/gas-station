@@ -44,6 +44,7 @@ export class NavbarComponent implements OnInit {
     
     checkout(){
         this.qrcodeSerbice.checkout();
+        this.router.navigateByUrl('/qr');
     }
 
     collapseNavbar() {

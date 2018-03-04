@@ -1,14 +1,36 @@
-<div class="row">
-	<div class="col-6">
-		<a [routerLink]="['/']">
-			<button class="btn btn-primary">
-				<span class="fa fa-arrow-left"></span>&nbsp;<span>Nazad</span>
-			</button>
-		</a>
-	</div>
-	<div class="col-6">
-		<a [routerLink]="['../map']">
-			<button class="btn btn-primary">Dalje</button>
-		</a>
-	</div>
+<div class="row" style="margin-bottom: 50px">
+
+	<form class="form-horizontal">
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Form Name</legend>
+
+			<!-- Multiple Radios -->
+			<div class="form-group" >
+				<label class="col-md-4 control-label" for="radios">Vrsta
+					Goriva</label>
+				<div class="col-md-4">
+					<div class="radio">
+						<label for="radios-0"> <input type="radio" name="radios"
+							id="radios-0" value="1" checked="checked"> Dizel
+						</label>
+					</div>
+					<div class="radio">
+						<label for="radios-1"> <input type="radio" name="radios"
+							id="radios-1" value="2"> Benzin
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<a [routerLink]="['/']">
+					<button class="btn btn-primary">
+						<span class="fa fa-arrow-left"></span>&nbsp;<span>Nazad</span>
+					</button>
+				</a> <a [routerLink]="['../map']">
+					<button class="btn btn-primary">Dalje</button>
+				</a>
+			</div>
 </div>

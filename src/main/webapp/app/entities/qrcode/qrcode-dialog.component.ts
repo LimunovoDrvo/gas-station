@@ -42,14 +42,6 @@ export class QrcodeDialogComponent implements OnInit {
     }
 
     save() {
-        this.isSaving = true;
-        if (this.qrcode.id !== undefined) {
-            this.subscribeToSaveResponse(
-                this.qrcodeService.update(this.qrcode));
-        } else {
-            this.subscribeToSaveResponse(
-                this.qrcodeService.create(this.qrcode));
-        }
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<Qrcode>>) {

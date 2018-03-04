@@ -6,6 +6,7 @@ import { ProfileService } from '../profiles/profile.service';
 import { Principal, LoginModalService, LoginService } from '../../shared';
 
 import { VERSION } from '../../app.constants';
+import { QrcodeService } from "../../../app/entities/qrcode";
 
 @Component({
     selector: 'jhi-navbar',
@@ -26,6 +27,7 @@ export class NavbarComponent implements OnInit {
         private loginService: LoginService,
         private principal: Principal,
         private loginModalService: LoginModalService,
+        public qrcodeSerbice: QrcodeService,
         private profileService: ProfileService,
         private router: Router
     ) {
@@ -38,6 +40,10 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+    }
+    
+    checkout(){
+        this.qrcodeSerbice.checkout();
     }
 
     collapseNavbar() {

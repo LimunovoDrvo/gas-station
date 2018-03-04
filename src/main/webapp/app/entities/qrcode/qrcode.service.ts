@@ -15,28 +15,38 @@ export class QrcodeService {
 
     private cart: Qrcode = new Qrcode();
 
+    public numOfItems = 0;
+    
 
     public addToCart( id: number ) {
-        if(this.cart.selectedItemIds == null){
-            this.cart.selectedItemIds = [];
+        if(this.cart.items == null){
+            this.cart.items = [];
         }
-        this.cart.selectedItemIds.push( id );
+        this.cart.items.push( {id: id} );
+        this.numOfItems++;
     }
 
     public checkout() {
-        return this.http.post<Qrcode>( this.resourceUrl, this.cart, { observe: 'response' } )
-            .map(( res: EntityResponseType ) => {
-                this.cart = new Qrcode(); 
-        });
+        this.create(this.cart).subscribe(
+                (res) => {
+                   alert('success')
+                },
+                (res) => {
+                    alert('error')
+                }
+            );
     }
 
 
     constructor( private http: HttpClient ) { }
 
-    create( qrcode: Qrcode ): Observable<EntityResponseType> {
+    create( qrcode: Qrcode ) {
         const copy = this.convert( qrcode );
         return this.http.post<Qrcode>( this.resourceUrl, copy, { observe: 'response' } )
-            .map(( res: EntityResponseType ) => this.convertResponse( res ) );
+            .map(( res: EntityResponseType ) =>{
+                this.cart = new Qrcode(); 
+                this.numOfItems = 0;
+            });
     }
 
     update( qrcode: Qrcode ): Observable<EntityResponseType> {
